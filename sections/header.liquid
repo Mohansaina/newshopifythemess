@@ -3,9 +3,9 @@
     <div class="flex items-center gap-12 lg:flex-1">
       <a href="{{ routes.root_url }}" class="flex items-center gap-3">
         {% if section.settings.logo != blank %}
-          <img alt="{{ shop.name | escape }}" class="h-10 w-auto object-contain rounded-full" src="{{ section.settings.logo | image_url: width: 200 }}">
+          <img alt="{{ shop.name | escape }}" class="h-10 w-auto object-contain rounded-full" src="{{ section.settings.logo | image_url: width: 200 }}" width="200" height="40">
         {% elsif section.settings.logo_url != blank %}
-          <img alt="{{ shop.name | escape }}" class="h-10 w-auto object-contain rounded-full" src="{{ section.settings.logo_url }}">
+          <img alt="{{ shop.name | escape }}" class="h-10 w-auto object-contain rounded-full" src="{{ section.settings.logo_url }}" width="200" height="40">
         {% else %}
           <span class="font-display-lg text-2xl font-normal tracking-wide text-primary">{{ shop.name }}</span>
         {% endif %}
@@ -19,9 +19,9 @@
             </a>
           {% endfor %}
         {% else %}
-          <a class="transition-colors text-primary font-semibold underline underline-offset-8" href="/collections/all">SHOP</a>
-          <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/collections">COLLECTIONS</a>
-          <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/collections/new-arrivals">NEW ARRIVALS</a>
+          <a class="transition-colors text-primary font-semibold underline underline-offset-8" href="{{ routes.all_products_collection_url }}">SHOP</a>
+          <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="{{ routes.collections_url }}">COLLECTIONS</a>
+          <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="{{ routes.collections_url }}/new-arrivals">NEW ARRIVALS</a>
           <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/pages/about">ABOUT</a>
         {% endif %}
       </nav>

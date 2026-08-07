@@ -1,7 +1,7 @@
 <div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop py-16">
   <h1 class="font-headline-lg text-headline-lg text-on-surface mb-8 text-center">Search Results</h1>
 
-  <form action="/search" method="get" class="max-w-xl mx-auto mb-16 flex gap-4">
+  <form action="{{ routes.search_url }}" method="get" class="max-w-xl mx-auto mb-16 flex gap-4">
     <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search our collection..." class="flex-1 bg-surface rounded-xl border border-outline-variant px-6 py-4 font-body-md text-on-surface focus:outline-none focus:border-primary shadow-sm">
     <button type="submit" class="bg-on-secondary-fixed text-on-primary font-label-caps text-label-caps py-4 px-8 rounded-xl hover:bg-surface-tint transition-colors">
       SEARCH

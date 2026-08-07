@@ -5,13 +5,17 @@
         <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container relative z-10 w-full max-w-md ml-auto">
           <img class="w-full h-full object-cover"
                src="{% if section.settings.image_main != blank %}{{ section.settings.image_main | image_url: width: 1000 }}{% else %}{{ section.settings.image_main_url }}{% endif %}"
-               alt="{{ section.settings.heading | strip_html | escape }}">
+               alt="{{ section.settings.heading | strip_html | escape }}"
+               width="1000"
+               height="1250">
         </div>
         <div class="absolute top-20 -left-8 lg:-left-16 w-3/4 aspect-square rounded-full bg-surface-container-high blur-[60px] opacity-60 z-0"></div>
         <div class="absolute -bottom-10 right-10 aspect-[3/4] w-1/2 rounded-2xl overflow-hidden bg-surface-container z-20 shadow-xl hidden md:block">
           <img class="w-full h-full object-cover"
                src="{% if section.settings.image_secondary != blank %}{{ section.settings.image_secondary | image_url: width: 800 }}{% else %}{{ section.settings.image_secondary_url }}{% endif %}"
-               alt="Craftsmanship detail">
+               alt="Craftsmanship detail"
+               width="800"
+               height="1066">
         </div>
       </div>
 

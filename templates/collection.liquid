@@ -15,22 +15,28 @@
           <a href="{{ product.url }}">
             <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500"
                  src="{{ product.featured_image | image_url: width: 600 }}"
-                 alt="{{ product.title | escape }}">
+                 alt="{{ product.title | escape }}"
+                 width="600"
+                 height="750">
             {% if product.images[1] != blank %}
               <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105"
                    src="{{ product.images[1] | image_url: width: 600 }}"
-                   alt="{{ product.title | escape }}">
+                   alt="{{ product.title | escape }}"
+                   width="600"
+                   height="750">
             {% else %}
               <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105"
                    src="{{ product.featured_image | image_url: width: 600 }}"
-                   alt="{{ product.title | escape }}">
+                   alt="{{ product.title | escape }}"
+                   width="600"
+                   height="750">
             {% endif %}
           </a>
           <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10" aria-label="Wishlist">
             <span class="material-symbols-outlined text-[20px]">favorite</span>
           </button>
           <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10">
-            <form action="/cart/add" method="post" enctype="multipart/form-data">
+            <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
               <button type="submit" class="w-full bg-on-secondary-fixed/90 backdrop-blur text-on-primary font-label-caps text-label-caps py-3 rounded-lg hover:bg-on-secondary-fixed transition-colors">
                 ADD TO CART

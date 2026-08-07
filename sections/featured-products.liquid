@@ -18,22 +18,28 @@
               <a href="{{ product.url }}">
                 <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500"
                      src="{{ product.featured_image | image_url: width: 600 }}"
-                     alt="{{ product.title | escape }}">
+                     alt="{{ product.title | escape }}"
+                     width="600"
+                     height="750">
                 {% if product.images[1] != blank %}
                   <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105"
                        src="{{ product.images[1] | image_url: width: 600 }}"
-                       alt="{{ product.title | escape }}">
+                       alt="{{ product.title | escape }}"
+                       width="600"
+                       height="750">
                 {% else %}
                   <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105"
                        src="{{ product.featured_image | image_url: width: 600 }}"
-                       alt="{{ product.title | escape }}">
+                       alt="{{ product.title | escape }}"
+                       width="600"
+                       height="750">
                 {% endif %}
               </a>
               <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10" aria-label="Add to wishlist">
                 <span class="material-symbols-outlined text-[20px]">favorite</span>
               </button>
               <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10">
-                <form action="/cart/add" method="post" enctype="multipart/form-data">
+                <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                   <button type="submit" class="w-full bg-on-secondary-fixed/90 backdrop-blur text-on-primary font-label-caps text-label-caps py-3 rounded-lg hover:bg-on-secondary-fixed transition-colors">
                     ADD TO CART
@@ -54,8 +60,8 @@
         <!-- Product 1 -->
         <div class="group flex flex-col">
           <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container mb-6">
-            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuyQbGlgkYfTBe8iLJgPfhyLrt5e_flchpRa9kylTHL-6RBglmD9tv-UotMXL7ncUDKRpLygp1LBSomtejykDhWJpXfXeF5alnmRHF4Tad8z8t6oIOBytPexGWLjG42VescLo_-GGUvTPb1QVkn75Hfl8981Sf6pvNSy0xIJLh23UBNsTNG594kwTuCPEfQEVXV8m_YNfpluvAeCtlU1Ms35dBVSoQAbOmCJSBmavBX-GH71e7Qok" alt="Aura Pendant">
-            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW-LOqyhrCeghHmnBtcD8C9ZElLfC0XXp2B1pDjtJhbxdslzelaxVraMzNLrzKjpGd57PekMbdbfWbri62wDXpmoJOG5xX5SyJa8tTSf8VH_yCjjHiEiMM5WJF7Ub81QlbcFkpFhd3D8JqCVl8Kk3B8-hhMS3ZAdKceof9m1ADYcl6rOZd7E5T_j48GQFxSf_iI4nT_PKSpQ9pfY8EFHhDH_xVHdq0khVQh1w7zFUL9rrWDGrwC-s" alt="Aura Pendant Model">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuyQbGlgkYfTBe8iLJgPfhyLrt5e_flchpRa9kylTHL-6RBglmD9tv-UotMXL7ncUDKRpLygp1LBSomtejykDhWJpXfXeF5alnmRHF4Tad8z8t6oIOBytPexGWLjG42VescLo_-GGUvTPb1QVkn75Hfl8981Sf6pvNSy0xIJLh23UBNsTNG594kwTuCPEfQEVXV8m_YNfpluvAeCtlU1Ms35dBVSoQAbOmCJSBmavBX-GH71e7Qok" alt="Aura Pendant" width="600" height="750">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW-LOqyhrCeghHmnBtcD8C9ZElLfC0XXp2B1pDjtJhbxdslzelaxVraMzNLrzKjpGd57PekMbdbfWbri62wDXpmoJOG5xX5SyJa8tTSf8VH_yCjjHiEiMM5WJF7Ub81QlbcFkpFhd3D8JqCVl8Kk3B8-hhMS3ZAdKceof9m1ADYcl6rOZd7E5T_j48GQFxSf_iI4nT_PKSpQ9pfY8EFHhDH_xVHdq0khVQh1w7zFUL9rrWDGrwC-s" alt="Aura Pendant Model" width="600" height="750">
             <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10">
               <span class="material-symbols-outlined text-[20px]">favorite</span>
             </button>
@@ -75,8 +81,8 @@
         <!-- Product 2 -->
         <div class="group flex flex-col">
           <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container mb-6">
-            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD97e9U7xXeSYf6mOE7LwD3q6a2YwBowS-YjpdCpAaJBI0cUOOjSxatgy_DPMdQYZ_PSjso6Ipc1FWA4zA-IZ9wVKkIt1XCcyD83r2xtk4dqI9X3pEcy4kQI0fZJcgmyadKi0wHzFqnwwzrhE9AhL4NV3GErty9sq4WAEweTEloLtypDA-x84ilZC4j4rIwsmcM7z0Y0CFCe73MsTYAkF98qLKTSv1VfD4rqt3kacFZd7pEcHZTdYk" alt="Eternity Band">
-            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCggOrxBXwaM_DrGuXEnlZEmthMqx7iWEaMPwn5_G_YdngZyrgIv5WTVOCMk7d5z6dn9t1xB2lxIzvNOS6kJ8M64y_2AKa9Zyj3mhnjS7m-YBk0TF7t_sVbz4c3PZnFZoLyy5IDiswzvPaGhvc-4w3hQenZv7LVzk9CI4nFahuQMpaCw8z0mEz8x7UVY2rYL9jAf7dPLSu9jb-a60huerzrGasa12TtU5nuUeMKPBEC1F3OW03IFYs" alt="Eternity Band Model">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD97e9U7xXeSYf6mOE7LwD3q6a2YwBowS-YjpdCpAaJBI0cUOOjSxatgy_DPMdQYZ_PSjso6Ipc1FWA4zA-IZ9wVKkIt1XCcyD83r2xtk4dqI9X3pEcy4kQI0fZJcgmyadKi0wHzFqnwwzrhE9AhL4NV3GErty9sq4WAEweTEloLtypDA-x84ilZC4j4rIwsmcM7z0Y0CFCe73MsTYAkF98qLKTSv1VfD4rqt3kacFZd7pEcHZTdYk" alt="Eternity Band" width="600" height="750">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCggOrxBXwaM_DrGuXEnlZEmthMqx7iWEaMPwn5_G_YdngZyrgIv5WTVOCMk7d5z6dn9t1xB2lxIzvNOS6kJ8M64y_2AKa9Zyj3mhnjS7m-YBk0TF7t_sVbz4c3PZnFZoLyy5IDiswzvPaGhvc-4w3hQenZv7LVzk9CI4nFahuQMpaCw8z0mEz8x7UVY2rYL9jAf7dPLSu9jb-a60huerzrGasa12TtU5nuUeMKPBEC1F3OW03IFYs" alt="Eternity Band Model" width="600" height="750">
             <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10">
               <span class="material-symbols-outlined text-[20px]">favorite</span>
             </button>
@@ -96,8 +102,8 @@
         <!-- Product 3 -->
         <div class="group flex flex-col">
           <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container mb-6">
-            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB4dfhvDseWOnubYQ8dJVzcI5hcbJrQUv3dhgxgE5p8Ksw2iegtFgWFrVdeozA2iSm7VRyQJ2Xv9i4ewYFDHw6rJC5cDe6AQqzM6p49XEeSfP8U8KTclkg_XO_bEvNQzwobv6x6nfA1eMfU1aUXfviNP-kKPAvwCMosS7L1KttdzxPwsB6ucJsjbW8pCAXgyGm9Lb0u9wkaJ0Dzjxas5WCx69O18uOc5_rvopE_y98wYoi88W8STM" alt="Lustre Drops">
-            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuqsAjidT8B3QBvnd6l6K6xcu70b3rec0k226gKPUW81d8HI8mawgjjmRpbq_jbN_ZZ0woxZ_7TEWF_OwwYUTIhegwVu2RkU_MWziZnFxjIkhud8IO531BRf9Dgzx7UJ7MZoWKEVLB3a7NwjclhcIWGX-evdJaRtZktl3U9PbZelNtFFArvCvKdA3zF51kewA_pysoRqL5Ip1sr8X0dAkaMpOCzgkTsqD4A952GcrgffAz5MjSalE" alt="Lustre Drops Model">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB4dfhvDseWOnubYQ8dJVzcI5hcbJrQUv3dhgxgE5p8Ksw2iegtFgWFrVdeozA2iSm7VRyQJ2Xv9i4ewYFDHw6rJC5cDe6AQqzM6p49XEeSfP8U8KTclkg_XO_bEvNQzwobv6x6nfA1eMfU1aUXfviNP-kKPAvwCMosS7L1KttdzxPwsB6ucJsjbW8pCAXgyGm9Lb0u9wkaJ0Dzjxas5WCx69O18uOc5_rvopE_y98wYoi88W8STM" alt="Lustre Drops" width="600" height="750">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuqsAjidT8B3QBvnd6l6K6xcu70b3rec0k226gKPUW81d8HI8mawgjjmRpbq_jbN_ZZ0woxZ_7TEWF_OwwYUTIhegwVu2RkU_MWziZnFxjIkhud8IO531BRf9Dgzx7UJ7MZoWKEVLB3a7NwjclhcIWGX-evdJaRtZktl3U9PbZelNtFFArvCvKdA3zF51kewA_pysoRqL5Ip1sr8X0dAkaMpOCzgkTsqD4A952GcrgffAz5MjSalE" alt="Lustre Drops Model" width="600" height="750">
             <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10">
               <span class="material-symbols-outlined text-[20px]">favorite</span>
             </button>
@@ -117,8 +123,8 @@
         <!-- Product 4 -->
         <div class="group flex flex-col">
           <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container mb-6">
-            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWbXXV_iFHBvW5gc_nzwkGwu9Utx20OglhWoZMyTAiRe7zRR0OWIaL0m-xWxI-astG1onf4lBzVvu2rYAFZWjnVMIB6t1S_UkNO-DXoh3ut_xwyHiw-K43OajPeo_JNaBf8LSpd1g9K9p-6YIgeYCHMCHcoj3NxHhHw5LXQ_sekqMiMQ4WvbTDki4KhTY8ImXu1HONy282VXeG4o7mTIKiRdejV3NIWoup0kEjawwD8BNIq8yAS2M" alt="Structural Cuff">
-            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtpVI2IPp4VAblZMXIS6umFDGO4rX_gPErFqoJPBZOiuJOf94JpTKQswf90wlk07kgCTXY9X49v_IRLxClnwMjT1xXVVkfdfLqL-1oLznPoGFkn_ssDXC207fE7kAn7mcuxZDGlm-nffz0XGFid5oQq9l1qLMkjSRH9hGZKPH0M4SUSbF5P2AwnDLHXfgXUCNbU-rznTl2FC6zyMZtVhrA_hN4M_RkKNytN73Pyx818zlSvVSRM7g" alt="Structural Cuff Model">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWbXXV_iFHBvW5gc_nzwkGwu9Utx20OglhWoZMyTAiRe7zRR0OWIaL0m-xWxI-astG1onf4lBzVvu2rYAFZWjnVMIB6t1S_UkNO-DXoh3ut_xwyHiw-K43OajPeo_JNaBf8LSpd1g9K9p-6YIgeYCHMCHcoj3NxHhHw5LXQ_sekqMiMQ4WvbTDki4KhTY8ImXu1HONy282VXeG4o7mTIKiRdejV3NIWoup0kEjawwD8BNIq8yAS2M" alt="Structural Cuff" width="600" height="750">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtpVI2IPp4VAblZMXIS6umFDGO4rX_gPErFqoJPBZOiuJOf94JpTKQswf90wlk07kgCTXY9X49v_IRLxClnwMjT1xXVVkfdfLqL-1oLznPoGFkn_ssDXC207fE7kAn7mcuxZDGlm-nffz0XGFid5oQq9l1qLMkjSRH9hGZKPH0M4SUSbF5P2AwnDLHXfgXUCNbU-rznTl2FC6zyMZtVhrA_hN4M_RkKNytN73Pyx818zlSvVSRM7g" alt="Structural Cuff Model" width="600" height="750">
             <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10">
               <span class="material-symbols-outlined text-[20px]">favorite</span>
             </button>
@@ -138,7 +144,7 @@
     </div>
 
     <div class="mt-16 flex justify-center">
-      <a href="{{ selected_collection.url | default: '/collections/all' }}" class="bg-transparent border border-outline text-on-surface font-label-caps text-label-caps py-4 px-12 rounded-lg hover:border-on-surface transition-colors duration-300 inline-block">
+      <a href="{{ selected_collection.url | default: routes.all_products_collection_url }}" class="bg-transparent border border-outline text-on-surface font-label-caps text-label-caps py-4 px-12 rounded-lg hover:border-on-surface transition-colors duration-300 inline-block">
         {{ section.settings.button_label | default: 'VIEW ALL NEW ARRIVALS' }}
       </a>
     </div>

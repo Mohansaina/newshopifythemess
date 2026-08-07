@@ -1,0 +1,18 @@
+{
+  "general": {
+    "search": {
+      "submit": "Search"
+    },
+    "newsletter": {
+      "submit": "Subscribe"
+    }
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu"
+    },
+    "cart": {
+      "title": "Your Shopping Bag"
+    }
+  }
+}

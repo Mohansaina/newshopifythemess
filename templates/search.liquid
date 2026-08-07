@@ -1,0 +1,28 @@
+<div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop py-16">
+  <h1 class="font-headline-lg text-headline-lg text-on-surface mb-8 text-center">Search Results</h1>
+
+  <form action="/search" method="get" class="max-w-xl mx-auto mb-16 flex gap-4">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search our collection..." class="flex-1 bg-surface rounded-xl border border-outline-variant px-6 py-4 font-body-md text-on-surface focus:outline-none focus:border-primary shadow-sm">
+    <button type="submit" class="bg-on-secondary-fixed text-on-primary font-label-caps text-label-caps py-4 px-8 rounded-xl hover:bg-surface-tint transition-colors">
+      SEARCH
+    </button>
+  </form>
+
+  {% if search.performed %}
+    {% if search.results_count > 0 %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {% for item in search.results %}
+          <div class="flex flex-col p-6 rounded-2xl bg-surface-container-low border border-outline-variant">
+            <h3 class="font-headline-md text-xl text-on-surface mb-2">
+              <a href="{{ item.url }}">{{ item.title }}</a>
+            </h3>
+            <p class="font-body-md text-sm text-on-surface-variant line-clamp-3 mb-4">{{ item.content | strip_html | truncatewords: 25 }}</p>
+            <a href="{{ item.url }}" class="font-label-caps text-label-caps text-primary hover:underline mt-auto">VIEW ITEM &rarr;</a>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-center text-on-surface-variant py-12 font-body-lg">No results found for "{{ search.terms }}".</p>
+    {% endif %}
+  {% endif %}
+</div>

@@ -1,0 +1,70 @@
+<section class="w-full py-32 bg-surface-container-low relative overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl aspect-[2/1] rounded-full bg-gradient-to-b from-primary/5 to-transparent blur-3xl pointer-events-none"></div>
+  <div class="max-w-3xl mx-auto px-margin-mobile text-center relative z-10">
+    <span class="material-symbols-outlined text-primary text-[40px] mb-8">diamond</span>
+    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">
+      {{ section.settings.heading | default: 'Join the Inner Circle' }}
+    </h2>
+    <p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
+      {{ section.settings.subheading | default: 'Subscribe to receive private invitations, early access to new collections, and stories from our atelier.' }}
+    </p>
+
+    {% form 'customer', class: 'flex flex-col sm:flex-row gap-4 max-w-xl mx-auto' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input class="flex-1 bg-surface rounded-xl border border-outline-variant px-6 py-4 font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors shadow-sm"
+             placeholder="{{ section.settings.placeholder | default: 'Email Address' }}"
+             required
+             type="email"
+             name="contact[email]">
+      <button class="bg-on-secondary-fixed text-on-primary font-label-caps text-label-caps py-4 px-10 rounded-xl hover:bg-surface-tint transition-colors duration-300 shadow-md whitespace-nowrap" type="submit">
+        {{ section.settings.button_label | default: 'SUBSCRIBE' }}
+      </button>
+    {% endform %}
+
+    <p class="font-body-md text-[13px] text-on-surface-variant mt-6">
+      By subscribing, you agree to our <a class="underline hover:text-primary" href="{{ section.settings.privacy_link | default: '/policies/privacy-policy' }}">Privacy Policy</a>.
+    </p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join the Inner Circle"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Subscribe to receive private invitations, early access to new collections, and stories from our atelier."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email Input Placeholder",
+      "default": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "SUBSCRIBE"
+    },
+    {
+      "type": "url",
+      "id": "privacy_link",
+      "label": "Privacy Policy Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

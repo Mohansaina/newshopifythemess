@@ -1,0 +1,66 @@
+/* JD Jewells - Shopify Theme Stylesheet */
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+  }
+  body {
+    overscroll-behavior: none;
+    background-color: #fff8f3;
+    color: #1e1b16;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom Typography & Utility Classes */
+.font-display-lg {
+  font-family: 'EB Garamond', serif;
+}
+.font-headline-lg {
+  font-family: 'EB Garamond', serif;
+}
+.font-headline-md {
+  font-family: 'EB Garamond', serif;
+}
+.font-body-lg {
+  font-family: 'Inter', sans-serif;
+}
+.font-body-md {
+  font-family: 'Inter', sans-serif;
+}
+.font-label-caps {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Color Tokens */
+:root {
+  --color-primary: #785918;
+  --color-primary-container: #c8a25a;
+  --color-surface-tint: #785918;
+  --color-surface: #fff8f3;
+  --color-background: #fff8f3;
+  --color-on-background: #1e1b16;
+  --color-on-surface: #1e1b16;
+  --color-on-surface-variant: #4e4639;
+  --color-surface-container-low: #fbf2e9;
+  --color-surface-container: #f5ece4;
+  --color-surface-container-high: #efe7de;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-on-secondary-fixed: #1c1b1b;
+  --color-outline: #807667;
+  --color-outline-variant: #d1c5b4;
+}

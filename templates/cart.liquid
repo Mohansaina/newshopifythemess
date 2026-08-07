@@ -1,0 +1,50 @@
+<div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop py-16">
+  <h1 class="font-headline-lg text-headline-lg text-on-surface mb-10 text-center">Your Shopping Bag</h1>
+
+  {% if cart.item_count > 0 %}
+    <form action="/cart" method="post" class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2 flex flex-col gap-6">
+        {% for item in cart.items %}
+          <div class="flex gap-6 p-6 rounded-2xl bg-surface-container-low border border-outline-variant items-center">
+            <div class="w-24 h-24 rounded-xl overflow-hidden bg-surface-container flex-shrink-0">
+              <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex flex-col flex-1">
+              <h3 class="font-headline-md text-xl text-on-surface mb-1">
+                <a href="{{ item.url }}">{{ item.product.title }}</a>
+              </h3>
+              <p class="font-body-md text-sm text-on-surface-variant mb-2">{{ item.variant.title }}</p>
+              <p class="font-body-md text-on-surface font-medium">{{ item.final_price | money }}</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" class="w-16 bg-surface border border-outline-variant rounded-lg px-3 py-2 text-center font-body-md">
+              <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="text-on-surface-variant hover:text-red-600 transition-colors">
+                <span class="material-symbols-outlined">delete</span>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="flex flex-col p-8 rounded-2xl bg-surface-container-low border border-outline-variant h-fit">
+        <h2 class="font-headline-md text-2xl text-on-surface mb-6">Order Summary</h2>
+        <div class="flex justify-between font-body-lg text-on-surface mb-4">
+          <span>Subtotal</span>
+          <span class="font-medium">{{ cart.total_price | money }}</span>
+        </div>
+        <p class="font-body-md text-xs text-on-surface-variant mb-8">Taxes and shipping calculated at checkout.</p>
+        <button type="submit" name="checkout" class="w-full bg-on-secondary-fixed text-on-primary font-label-caps text-label-caps py-4 rounded-xl hover:bg-surface-tint transition-colors duration-300 shadow-md text-center">
+          PROCEED TO CHECKOUT
+        </button>
+      </div>
+    </form>
+  {% else %}
+    <div class="text-center py-20">
+      <span class="material-symbols-outlined text-6xl text-primary mb-6">shopping_bag</span>
+      <p class="font-body-lg text-on-surface-variant mb-8">Your shopping bag is currently empty.</p>
+      <a href="/collections/all" class="bg-on-secondary-fixed text-on-primary font-label-caps text-label-caps py-4 px-10 rounded-xl hover:bg-surface-tint transition-colors duration-300 inline-block">
+        EXPLORE COLLECTIONS
+      </a>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,72 @@
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-[10px] shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+  <div class="h-20 max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between">
+    <div class="flex items-center gap-12 lg:flex-1">
+      <a href="{{ routes.root_url }}" class="flex items-center gap-3">
+        {% if section.settings.logo != blank %}
+          <img alt="{{ shop.name | escape }}" class="h-10 w-auto object-contain rounded-full" src="{{ section.settings.logo | image_url: width: 200 }}">
+        {% elsif section.settings.logo_url != blank %}
+          <img alt="{{ shop.name | escape }}" class="h-10 w-auto object-contain rounded-full" src="{{ section.settings.logo_url }}">
+        {% else %}
+          <span class="font-display-lg text-2xl font-normal tracking-wide text-primary">{{ shop.name }}</span>
+        {% endif %}
+      </a>
+      
+      <nav class="hidden lg:flex items-center gap-gutter">
+        {% if section.settings.menu != blank %}
+          {% for link in section.settings.menu.links %}
+            <a class="font-label-caps text-label-caps {% if link.active %}text-primary font-semibold underline underline-offset-8{% else %}text-on-surface-variant hover:text-on-surface transition-colors{% endif %}" href="{{ link.url }}">
+              {{ link.title | upcase }}
+            </a>
+          {% endfor %}
+        {% else %}
+          <a class="transition-colors text-primary font-semibold underline underline-offset-8" href="/collections/all">SHOP</a>
+          <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/collections">COLLECTIONS</a>
+          <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/collections/new-arrivals">NEW ARRIVALS</a>
+          <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/pages/about">ABOUT</a>
+        {% endif %}
+      </nav>
+    </div>
+
+    <div class="flex items-center gap-6 lg:flex-1 justify-end">
+      <a href="{{ routes.search_url }}" class="text-on-surface-variant hover:text-primary transition-colors" aria-label="Search">
+        <span class="material-symbols-outlined">search</span>
+      </a>
+      <a href="/pages/wishlist" class="text-on-surface-variant hover:text-primary transition-colors" aria-label="Wishlist">
+        <span class="material-symbols-outlined">favorite</span>
+      </a>
+      <a href="{{ routes.account_url }}" class="text-on-surface-variant hover:text-primary transition-colors" aria-label="Account">
+        <span class="material-symbols-outlined">person</span>
+      </a>
+      <a href="{{ routes.cart_url }}" class="relative text-on-surface-variant hover:text-primary transition-colors" aria-label="Shopping Bag">
+        <span class="material-symbols-outlined">shopping_bag</span>
+        <span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] text-on-primary">
+          {{ cart.item_count | default: 2 }}
+        </span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "logo_url",
+      "label": "Fallback Logo URL",
+      "default": "https://lh3.googleusercontent.com/aida/AP1WRLuqMr40NQotY5abS13BMIGJiVtQ2OKirnQIM7r7_9T1Mz4beWThs6rDgKhGYEAjKq7AxzZQz7W2GY9FTyuFaSiPHVngCNVl8DnPCU21ycAoZ2tIF-JGH-mf0bmOU_EdJZ7_4IiFj6QYG34RE8AA5zHhfWDaglEutBtg5RvdzY6RR1xbXOl8WTLjrr7LABhk0DDj0LXxogGYdq-nYTWYItqREvVeryUKVIugbgd9cQLHo9PP6QGyBKcKw84rEgm-qx4Io2YwLY0"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation Menu"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,182 @@
+<section class="w-full py-24 bg-surface-container-low" id="new-arrivals">
+  <div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop">
+    <div class="text-center mb-16">
+      <span class="font-label-caps text-label-caps text-primary tracking-widest block mb-4 uppercase">
+        {{ section.settings.subheading | default: 'Latest Additions' }}
+      </span>
+      <h2 class="font-headline-lg text-headline-lg text-on-surface">
+        {{ section.settings.heading | default: 'New Arrivals' }}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16">
+      {% assign selected_collection = collections[section.settings.collection] %}
+      {% if selected_collection != blank and selected_collection.products.size > 0 %}
+        {% for product in selected_collection.products limit: 4 %}
+          <div class="group flex flex-col">
+            <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container mb-6">
+              <a href="{{ product.url }}">
+                <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+                     src="{{ product.featured_image | image_url: width: 600 }}"
+                     alt="{{ product.title | escape }}">
+                {% if product.images[1] != blank %}
+                  <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105"
+                       src="{{ product.images[1] | image_url: width: 600 }}"
+                       alt="{{ product.title | escape }}">
+                {% else %}
+                  <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105"
+                       src="{{ product.featured_image | image_url: width: 600 }}"
+                       alt="{{ product.title | escape }}">
+                {% endif %}
+              </a>
+              <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10" aria-label="Add to wishlist">
+                <span class="material-symbols-outlined text-[20px]">favorite</span>
+              </button>
+              <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10">
+                <form action="/cart/add" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <button type="submit" class="w-full bg-on-secondary-fixed/90 backdrop-blur text-on-primary font-label-caps text-label-caps py-3 rounded-lg hover:bg-on-secondary-fixed transition-colors">
+                    ADD TO CART
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="flex flex-col flex-1">
+              <h3 class="font-headline-md text-[20px] leading-[28px] text-on-surface mb-2">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+              <p class="font-body-md text-on-surface-variant mb-3">{{ product.type | default: '18k Solid Gold' }}</p>
+              <p class="font-body-md text-on-surface mt-auto font-medium">{{ product.price | money }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <!-- Product 1 -->
+        <div class="group flex flex-col">
+          <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container mb-6">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuyQbGlgkYfTBe8iLJgPfhyLrt5e_flchpRa9kylTHL-6RBglmD9tv-UotMXL7ncUDKRpLygp1LBSomtejykDhWJpXfXeF5alnmRHF4Tad8z8t6oIOBytPexGWLjG42VescLo_-GGUvTPb1QVkn75Hfl8981Sf6pvNSy0xIJLh23UBNsTNG594kwTuCPEfQEVXV8m_YNfpluvAeCtlU1Ms35dBVSoQAbOmCJSBmavBX-GH71e7Qok" alt="Aura Pendant">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW-LOqyhrCeghHmnBtcD8C9ZElLfC0XXp2B1pDjtJhbxdslzelaxVraMzNLrzKjpGd57PekMbdbfWbri62wDXpmoJOG5xX5SyJa8tTSf8VH_yCjjHiEiMM5WJF7Ub81QlbcFkpFhd3D8JqCVl8Kk3B8-hhMS3ZAdKceof9m1ADYcl6rOZd7E5T_j48GQFxSf_iI4nT_PKSpQ9pfY8EFHhDH_xVHdq0khVQh1w7zFUL9rrWDGrwC-s" alt="Aura Pendant Model">
+            <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+            </button>
+            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10">
+              <button class="w-full bg-on-secondary-fixed/90 backdrop-blur text-on-primary font-label-caps text-label-caps py-3 rounded-lg hover:bg-on-secondary-fixed transition-colors">
+                ADD TO CART
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col flex-1">
+            <h4 class="font-headline-md text-[20px] leading-[28px] text-on-surface mb-2">Aura Pendant</h4>
+            <p class="font-body-md text-on-surface-variant mb-3">18k Solid Gold</p>
+            <p class="font-body-md text-on-surface mt-auto font-medium">$850</p>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="group flex flex-col">
+          <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container mb-6">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD97e9U7xXeSYf6mOE7LwD3q6a2YwBowS-YjpdCpAaJBI0cUOOjSxatgy_DPMdQYZ_PSjso6Ipc1FWA4zA-IZ9wVKkIt1XCcyD83r2xtk4dqI9X3pEcy4kQI0fZJcgmyadKi0wHzFqnwwzrhE9AhL4NV3GErty9sq4WAEweTEloLtypDA-x84ilZC4j4rIwsmcM7z0Y0CFCe73MsTYAkF98qLKTSv1VfD4rqt3kacFZd7pEcHZTdYk" alt="Eternity Band">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCggOrxBXwaM_DrGuXEnlZEmthMqx7iWEaMPwn5_G_YdngZyrgIv5WTVOCMk7d5z6dn9t1xB2lxIzvNOS6kJ8M64y_2AKa9Zyj3mhnjS7m-YBk0TF7t_sVbz4c3PZnFZoLyy5IDiswzvPaGhvc-4w3hQenZv7LVzk9CI4nFahuQMpaCw8z0mEz8x7UVY2rYL9jAf7dPLSu9jb-a60huerzrGasa12TtU5nuUeMKPBEC1F3OW03IFYs" alt="Eternity Band Model">
+            <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+            </button>
+            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10">
+              <button class="w-full bg-on-secondary-fixed/90 backdrop-blur text-on-primary font-label-caps text-label-caps py-3 rounded-lg hover:bg-on-secondary-fixed transition-colors">
+                ADD TO CART
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col flex-1">
+            <h4 class="font-headline-md text-[20px] leading-[28px] text-on-surface mb-2">Eternity Band</h4>
+            <p class="font-body-md text-on-surface-variant mb-3">Platinum &amp; Diamonds</p>
+            <p class="font-body-md text-on-surface mt-auto font-medium">$2,100</p>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="group flex flex-col">
+          <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container mb-6">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB4dfhvDseWOnubYQ8dJVzcI5hcbJrQUv3dhgxgE5p8Ksw2iegtFgWFrVdeozA2iSm7VRyQJ2Xv9i4ewYFDHw6rJC5cDe6AQqzM6p49XEeSfP8U8KTclkg_XO_bEvNQzwobv6x6nfA1eMfU1aUXfviNP-kKPAvwCMosS7L1KttdzxPwsB6ucJsjbW8pCAXgyGm9Lb0u9wkaJ0Dzjxas5WCx69O18uOc5_rvopE_y98wYoi88W8STM" alt="Lustre Drops">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuqsAjidT8B3QBvnd6l6K6xcu70b3rec0k226gKPUW81d8HI8mawgjjmRpbq_jbN_ZZ0woxZ_7TEWF_OwwYUTIhegwVu2RkU_MWziZnFxjIkhud8IO531BRf9Dgzx7UJ7MZoWKEVLB3a7NwjclhcIWGX-evdJaRtZktl3U9PbZelNtFFArvCvKdA3zF51kewA_pysoRqL5Ip1sr8X0dAkaMpOCzgkTsqD4A952GcrgffAz5MjSalE" alt="Lustre Drops Model">
+            <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+            </button>
+            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10">
+              <button class="w-full bg-on-secondary-fixed/90 backdrop-blur text-on-primary font-label-caps text-label-caps py-3 rounded-lg hover:bg-on-secondary-fixed transition-colors">
+                ADD TO CART
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col flex-1">
+            <h4 class="font-headline-md text-[20px] leading-[28px] text-on-surface mb-2">Lustre Drops</h4>
+            <p class="font-body-md text-on-surface-variant mb-3">South Sea Pearl &amp; 18k Gold</p>
+            <p class="font-body-md text-on-surface mt-auto font-medium">$1,450</p>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="group flex flex-col">
+          <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container mb-6">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0 transition-opacity duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWbXXV_iFHBvW5gc_nzwkGwu9Utx20OglhWoZMyTAiRe7zRR0OWIaL0m-xWxI-astG1onf4lBzVvu2rYAFZWjnVMIB6t1S_UkNO-DXoh3ut_xwyHiw-K43OajPeo_JNaBf8LSpd1g9K9p-6YIgeYCHMCHcoj3NxHhHw5LXQ_sekqMiMQ4WvbTDki4KhTY8ImXu1HONy282VXeG4o7mTIKiRdejV3NIWoup0kEjawwD8BNIq8yAS2M" alt="Structural Cuff">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtpVI2IPp4VAblZMXIS6umFDGO4rX_gPErFqoJPBZOiuJOf94JpTKQswf90wlk07kgCTXY9X49v_IRLxClnwMjT1xXVVkfdfLqL-1oLznPoGFkn_ssDXC207fE7kAn7mcuxZDGlm-nffz0XGFid5oQq9l1qLMkjSRH9hGZKPH0M4SUSbF5P2AwnDLHXfgXUCNbU-rznTl2FC6zyMZtVhrA_hN4M_RkKNytN73Pyx818zlSvVSRM7g" alt="Structural Cuff Model">
+            <button class="absolute top-4 right-4 h-10 w-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface transition-all shadow-sm z-10">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+            </button>
+            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10">
+              <button class="w-full bg-on-secondary-fixed/90 backdrop-blur text-on-primary font-label-caps text-label-caps py-3 rounded-lg hover:bg-on-secondary-fixed transition-colors">
+                ADD TO CART
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col flex-1">
+            <h4 class="font-headline-md text-[20px] leading-[28px] text-on-surface mb-2">Structural Cuff</h4>
+            <p class="font-body-md text-on-surface-variant mb-3">18k Solid Gold</p>
+            <p class="font-body-md text-on-surface mt-auto font-medium">$3,200</p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="mt-16 flex justify-center">
+      <a href="{{ selected_collection.url | default: '/collections/all' }}" class="bg-transparent border border-outline text-on-surface font-label-caps text-label-caps py-4 px-12 rounded-lg hover:border-on-surface transition-colors duration-300 inline-block">
+        {{ section.settings.button_label | default: 'VIEW ALL NEW ARRIVALS' }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "LATEST ADDITIONS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "New Arrivals"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Shopify Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "VIEW ALL NEW ARRIVALS"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}

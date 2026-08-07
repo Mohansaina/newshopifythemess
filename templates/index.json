@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Timeless Jewellery,<br>Crafted to Shine",
+        "subheading": "Luxury craftsmanship for every occasion. Discover our curated collections designed to capture life's most precious moments with unparalleled elegance.",
+        "button_1_label": "SHOP COLLECTION",
+        "button_2_label": "DISCOVER MORE"
+      }
+    },
+    "featured_collections": {
+      "type": "featured-collections",
+      "settings": {
+        "subheading": "CURATIONS",
+        "heading": "Featured Collections",
+        "view_all_label": "VIEW ALL COLLECTIONS"
+      }
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {
+        "subheading": "LATEST ADDITIONS",
+        "heading": "New Arrivals",
+        "button_label": "VIEW ALL NEW ARRIVALS"
+      }
+    },
+    "brand_story": {
+      "type": "brand-story",
+      "settings": {
+        "subheading": "OUR HERITAGE",
+        "heading": "Masters of <br>the Subtle Art",
+        "paragraph_1": "For over four decades, JD Jewells has operated at the intersection of classical proportions and modern minimalism. We believe that true luxury speaks in whispers, not shouts.",
+        "paragraph_2": "Every piece in our collection is born from a rigorous dedication to materials and an obsessive attention to the spaces between. Our master craftsmen source only conflict-free stones and recycled precious metals, creating museum-quality pieces intended to be worn, lived in, and passed down.",
+        "link_text": "EXPLORE OUR CRAFTSMANSHIP"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Join the Inner Circle",
+        "subheading": "Subscribe to receive private invitations, early access to new collections, and stories from our atelier.",
+        "button_label": "SUBSCRIBE"
+      }
+    }
+  },
+  "order": [
+    "hero_banner",
+    "featured_collections",
+    "featured_products",
+    "brand_story",
+    "newsletter"
+  ]
+}

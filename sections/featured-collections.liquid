@@ -1,0 +1,143 @@
+<section class="w-full py-margin-desktop bg-surface" id="collections">
+  <div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+      <div>
+        <span class="font-label-caps text-label-caps text-primary tracking-widest block mb-4 uppercase">
+          {{ section.settings.subheading | default: 'Curations' }}
+        </span>
+        <h2 class="font-headline-lg text-headline-lg text-on-surface">
+          {{ section.settings.heading | default: 'Featured Collections' }}
+        </h2>
+      </div>
+      <a class="font-label-caps text-label-caps text-primary border-b border-primary hover:text-on-surface hover:border-on-surface transition-colors pb-1" href="{{ section.settings.view_all_link | default: '/collections' }}">
+        {{ section.settings.view_all_label | default: 'VIEW ALL COLLECTIONS' }}
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% assign col = collections[block.settings.collection] %}
+          <a class="group block relative overflow-hidden rounded-2xl bg-surface-container aspect-[3/4] {% if forloop.index == 2 or forloop.index == 4 %}lg:translate-y-8{% endif %}" href="{{ col.url | default: block.settings.url | default: '#' }}" {{ block.shopify_attributes }}>
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                 src="{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 800 }}{% else %}{{ block.settings.image_url }}{% endif %}"
+                 alt="{{ block.settings.title | escape }}">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+            <div class="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end z-10">
+              <h3 class="font-headline-md text-headline-md text-on-primary">
+                {{ col.title | default: block.settings.title }}
+              </h3>
+              <span class="material-symbols-outlined text-on-primary opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">arrow_forward</span>
+            </div>
+          </a>
+        {% endfor %}
+      {% else %}
+        <!-- Default Fallback Cards matching Stitch Design -->
+        <a class="group block relative overflow-hidden rounded-2xl bg-surface-container aspect-[3/4]" href="/collections/rings">
+          <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu_R3QOfqketNWySgasW5VuxvtjSsQl6IxFhUKYEaVNgszx6NkdXYh9P5vdAQ-_krtPUtKKB9YvZLFsurfdf6blaVz1tUYZOYhdfdG4tpkyCTcQuijhlKaGj3z1dPohtmAi-F-Mg_9yEMyV4sY9IBP3-O9YKthu_J2LUg9DBmDKAANxa9doeP6hP9ZjRmfnwZdgZEUv91L3BXTV5Ql2VFJioMLwAz7h0aTWSQSIb33ABMZnSl4Gsg" alt="Rings">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end z-10">
+            <h3 class="font-headline-md text-headline-md text-on-primary">Rings</h3>
+            <span class="material-symbols-outlined text-on-primary opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">arrow_forward</span>
+          </div>
+        </a>
+
+        <a class="group block relative overflow-hidden rounded-2xl bg-surface-container aspect-[3/4] lg:translate-y-8" href="/collections/necklaces">
+          <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSZDPnOsMW8rQZw4hslmec-Ph5yME5Yc732NsWJFueLSjnIKcFbo1velZ9AuLxDdUNOlc7j_A78bjSu0DXQ8v76mZAQIyQ6ZLeyL1k5gSRYgo7vDLK3seD_MMY_rGlEUhRovrQ_Ql2JEDsv9rAO_P1Mgl2-xKCL13XHuJMFxhwkkl7s2ljOGV7zbG9gSmgcaB7kyGYOdxYVyqscscIp7o7FPGOy-tUzPKWNSYov9-yNHh5QeMWGqY" alt="Necklaces">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end z-10">
+            <h3 class="font-headline-md text-headline-md text-on-primary">Necklaces</h3>
+            <span class="material-symbols-outlined text-on-primary opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">arrow_forward</span>
+          </div>
+        </a>
+
+        <a class="group block relative overflow-hidden rounded-2xl bg-surface-container aspect-[3/4]" href="/collections/bracelets">
+          <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOYISOTD6uUaX5Aux3Cq0jmmLY-ztv-WKrlpGyEjLyLg9hAKcNJuGxKnQ1tpG7PeOIVa7KOfaQ39-9CcH666PmZpSZw7zD23vM5r68Dl7gWIwUoLCo0m-fLXOlqUDDOO2texMl3Q25RXyvhNr0GavzGqSveibsOQR2OwqJan57FeRZxNVFXMorH7n8usP7_w92yQFnASYbSkbNpHyL-sB3Tw2hpB7nyEC65T8R7HDwg3cYbV5wE5M" alt="Bracelets">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end z-10">
+            <h3 class="font-headline-md text-headline-md text-on-primary">Bracelets</h3>
+            <span class="material-symbols-outlined text-on-primary opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">arrow_forward</span>
+          </div>
+        </a>
+
+        <a class="group block relative overflow-hidden rounded-2xl bg-surface-container aspect-[3/4] lg:translate-y-8" href="/collections/earrings">
+          <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvr0TEnUAx5JGboQpnGfTQIEdUEC1X3ArU8Zr8pNzoKf_23fTGxpVyn85PLmlyAWIjoUSBwHvispKWykNLFJqy4NFI1_mvb_LPBwg2icJAmqNwPqoUnTVrw7kyLNCKTriAjvVFCYo2hPwvdgwJi7vV2Ca-dmmQKzF4zvoAgXe5VYup8xXopVqce6ffGHxDOJkvCaJ6DUufkY5MtveZ2gZUMMndgsyntv20AdJvBLmfhiQ89Gwjb2w" alt="Earrings">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end z-10">
+            <h3 class="font-headline-md text-headline-md text-on-primary">Earrings</h3>
+            <span class="material-symbols-outlined text-on-primary opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">arrow_forward</span>
+          </div>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "CURATIONS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Collections"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View All Link Text",
+      "default": "VIEW ALL COLLECTIONS"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection Card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Shopify Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "image_url",
+          "label": "Fallback Image URL"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Custom Card Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collections"
+    }
+  ]
+}
+{% endschema %}

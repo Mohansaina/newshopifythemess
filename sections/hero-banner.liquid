@@ -1,0 +1,88 @@
+<section class="relative w-full h-[85vh] min-h-[600px] flex items-center bg-surface-container-low overflow-hidden -mt-20">
+  <div class="absolute inset-0 bg-cover bg-center bg-no-repeat w-full h-full"
+       style="background-image: url('{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 2500 }}{% else %}{{ section.settings.image_url }}{% endif %}');">
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-t from-surface-container-low/90 via-surface-container-low/40 to-transparent"></div>
+  <div class="absolute inset-0 bg-black/10"></div>
+  
+  <div class="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop pt-20 flex flex-col justify-end h-full pb-32">
+    <div class="max-w-3xl">
+      <h1 class="font-display-lg text-display-lg-mobile lg:text-display-lg text-on-surface mb-6 leading-tight">
+        {{ section.settings.heading | default: 'Timeless Jewellery,<br>Crafted to Shine' }}
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+        {{ section.settings.subheading | default: "Luxury craftsmanship for every occasion. Discover our curated collections designed to capture life's most precious moments with unparalleled elegance." }}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6">
+        {% if section.settings.button_1_label != blank %}
+          <a href="{{ section.settings.button_1_link | default: '/collections/all' }}" class="bg-on-secondary-fixed text-on-primary font-label-caps text-label-caps py-4 px-8 rounded-lg hover:bg-surface-tint transition-colors duration-300 shadow-md inline-block text-center">
+            {{ section.settings.button_1_label }}
+          </a>
+        {% endif %}
+        {% if section.settings.button_2_label != blank %}
+          <a href="{{ section.settings.button_2_link | default: '#collections' }}" class="bg-transparent border border-primary-container text-primary-container font-label-caps text-label-caps py-4 px-8 rounded-lg hover:bg-primary-container/10 transition-colors duration-300 inline-block text-center">
+            {{ section.settings.button_2_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "image_url",
+      "label": "Hero Image Fallback URL",
+      "default": "https://lh3.googleusercontent.com/aida-public/AB6AXuAmhL80xxaeYbuswNb8FNTA7V0ZtP4vTG0eRMoUVMSXhdV2WK37F0fhqgk6R5S5p7Dtvqr4jUNs7YSDRxmpokkrj_wjcEDf4yTj_ph4Iw4Bg_GN9ZQ5Z9s0xFJxdXmJgZWwR2Ox2r9d0kXFzLCwBdhqXEK72JJNjNGMnaiHsYgccPTetBzNezA4wN2iNKYhB9mFkd4Ucr9_eZQx7x67LL2qoww75dJlj6atyYOqy6qkNUj3xv82F5A"
+    },
+    {
+      "type": "inline_html",
+      "id": "heading",
+      "label": "Heading HTML",
+      "default": "Timeless Jewellery,<br>Crafted to Shine"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading Text",
+      "default": "Luxury craftsmanship for every occasion. Discover our curated collections designed to capture life's most precious moments with unparalleled elegance."
+    },
+    {
+      "type": "text",
+      "id": "button_1_label",
+      "label": "Primary Button Label",
+      "default": "SHOP COLLECTION"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_2_label",
+      "label": "Secondary Button Label",
+      "default": "DISCOVER MORE"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

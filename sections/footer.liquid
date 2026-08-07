@@ -1,0 +1,75 @@
+<footer class="w-full bg-surface-container-lowest py-20 border-t border-outline-variant">
+  <div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+      <div class="flex flex-col gap-6">
+        <div>
+          <h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4">COLLECTIONS</h4>
+          <ul class="flex flex-col gap-2">
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/collections/high-jewelry">High Jewelry</a></li>
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/collections/heritage-series">Heritage Series</a></li>
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/collections/modern-classics">Modern Classics</a></li>
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/collections/limited-edition">Limited Edition</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="flex flex-col gap-6">
+        <div>
+          <h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4">SUPPORT</h4>
+          <ul class="flex flex-col gap-2">
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/pages/appointment">Book an Appointment</a></li>
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/policies/shipping-policy">Shipping &amp; Returns</a></li>
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/products/gift-card">Gift Cards</a></li>
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/pages/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-6">
+        <div>
+          <h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4">LEGAL</h4>
+          <ul class="flex flex-col gap-2">
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/policies/privacy-policy">Privacy Policy</a></li>
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/policies/terms-of-service">Terms of Service</a></li>
+            <li class="font-body-md text-body-md hover:text-primary cursor-pointer transition-colors"><a href="/pages/accessibility">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-6">
+        <div>
+          <h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4">NEWSLETTER</h4>
+          <p class="font-body-md text-body-md mb-4">Join the circle for exclusive previews.</p>
+          {% form 'customer', class: 'flex border-b border-outline py-2' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input class="bg-transparent w-full outline-none font-body-md text-on-surface" placeholder="Email Address" type="email" name="contact[email]" required>
+            <button class="text-primary font-label-caps text-label-caps hover:text-surface-tint" type="submit">JOIN</button>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center justify-between border-t border-outline-variant pt-8">
+      <span class="font-label-caps text-label-caps text-on-surface-variant">
+        &copy; {{ 'now' | date: "%Y" }} {{ shop.name | default: 'JD JEWELS' | upcase }}. ALL RIGHTS RESERVED.
+      </span>
+      <div class="flex gap-6 mt-4 md:mt-0">
+        <a href="#" class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" aria-label="Share">share</a>
+        <a href="#" class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" aria-label="Instagram">photo_camera</a>
+        <a href="#" class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" aria-label="Website">public</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,111 @@
+<section class="w-full py-32 bg-surface">
+  <div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div class="relative">
+        <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-surface-container relative z-10 w-full max-w-md ml-auto">
+          <img class="w-full h-full object-cover"
+               src="{% if section.settings.image_main != blank %}{{ section.settings.image_main | image_url: width: 1000 }}{% else %}{{ section.settings.image_main_url }}{% endif %}"
+               alt="{{ section.settings.heading | strip_html | escape }}">
+        </div>
+        <div class="absolute top-20 -left-8 lg:-left-16 w-3/4 aspect-square rounded-full bg-surface-container-high blur-[60px] opacity-60 z-0"></div>
+        <div class="absolute -bottom-10 right-10 aspect-[3/4] w-1/2 rounded-2xl overflow-hidden bg-surface-container z-20 shadow-xl hidden md:block">
+          <img class="w-full h-full object-cover"
+               src="{% if section.settings.image_secondary != blank %}{{ section.settings.image_secondary | image_url: width: 800 }}{% else %}{{ section.settings.image_secondary_url }}{% endif %}"
+               alt="Craftsmanship detail">
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <span class="font-label-caps text-label-caps text-primary tracking-widest block mb-6 uppercase">
+          {{ section.settings.subheading | default: 'Our Heritage' }}
+        </span>
+        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">
+          {{ section.settings.heading | default: 'Masters of <br>the Subtle Art' }}
+        </h2>
+        <div class="w-12 h-px bg-primary mb-8"></div>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+          {{ section.settings.paragraph_1 | default: 'For over four decades, JD Jewells has operated at the intersection of classical proportions and modern minimalism. We believe that true luxury speaks in whispers, not shouts.' }}
+        </p>
+        <p class="font-body-md text-on-surface-variant mb-10">
+          {{ section.settings.paragraph_2 | default: 'Every piece in our collection is born from a rigorous dedication to materials and an obsessive attention to the spaces between. Our master craftsmen source only conflict-free stones and recycled precious metals, creating museum-quality pieces intended to be worn, lived in, and passed down.' }}
+        </p>
+        <div>
+          <a class="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary hover:text-surface-tint transition-colors group" href="{{ section.settings.link_url | default: '/pages/about' }}">
+            <span>{{ section.settings.link_text | default: 'EXPLORE OUR CRAFTSMANSHIP' }}</span>
+            <span class="material-symbols-outlined transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "OUR HERITAGE"
+    },
+    {
+      "type": "inline_html",
+      "id": "heading",
+      "label": "Heading HTML",
+      "default": "Masters of <br>the Subtle Art"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_1",
+      "label": "Paragraph 1",
+      "default": "For over four decades, JD Jewells has operated at the intersection of classical proportions and modern minimalism. We believe that true luxury speaks in whispers, not shouts."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_2",
+      "label": "Paragraph 2",
+      "default": "Every piece in our collection is born from a rigorous dedication to materials and an obsessive attention to the spaces between. Our master craftsmen source only conflict-free stones and recycled precious metals, creating museum-quality pieces intended to be worn, lived in, and passed down."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_main",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "image_main_url",
+      "label": "Main Image Fallback URL",
+      "default": "https://lh3.googleusercontent.com/aida-public/AB6AXuBDBxCYD503Gh6zkgR9I5SzTUgCa8IhiNNZY4N22IQs3AFPpad6bZe4dYOTkNIXoxwm84FokgLUiyYerKs0QFizVD3HXoPBMFO3MJBUbYpDRkr3KxeVCbVrQiAAezq2aJ7VKZdbXStOniPtLYOHAYriWrBj3nSLO6qX6Ee9qIwdmmQvQYh7cQtTAFpAZYHhTDEQX-NHAppP_i1Yf9hfMAQpNUzMQa9AYl4wQxi9fpiQiaFpWOdiymI"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_secondary",
+      "label": "Secondary Image"
+    },
+    {
+      "type": "text",
+      "id": "image_secondary_url",
+      "label": "Secondary Image Fallback URL",
+      "default": "https://lh3.googleusercontent.com/aida-public/AB6AXuC4eltCM7EUhLfziUhLQHkFXqT1gE0Cjbhm8fpLo__beTPwK_-enD2lg3x7J4FX5ejuwSHaswqyCX0j6JIhXgQ_H220eddSleAZckolBzxJ-9aZDDQZngNdYcpm1h3GsW7J6kjhwtxAr6HE4q9SvINnvhvnHmRdl4CMI1Tlse9YasXiQuDufuK3znWnCeDxSVYvvEzYEuAGgPZ85XSTa6sVlusmJrSPhZyXfK2wXzAW2S-AnlNnJDs"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "EXPLORE OUR CRAFTSMANSHIP"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Story"
+    }
+  ]
+}
+{% endschema %}
